@@ -3,28 +3,30 @@ const { connection } = require('../database/connection')
 const nodemon = require('nodemon')
 
 const Destino = connection.define('destinos', {
-    nome:{
+    nome: {
         type: DataTypes.STRING,
     },
-    cep:{
+    cep: {
         type: DataTypes.STRING,
     },
-    rua:{
+    rua: {
         type: DataTypes.STRING,
     },
-    cidade:{
-        type:DataTypes.STRING,
+    cidade: {
+        type: DataTypes.STRING,
     },
     lat: {
         type: DataTypes.FLOAT,
     },
-    long:{
+    long: {
         type: DataTypes.FLOAT,
     },
-    descricao:{
+    descricao: {
         type: DataTypes.TEXT,
     },
-
+    usuario_id: {
+        type: DataTypes.INTEGER,
+    }
 })
 
 module.exports = Destino

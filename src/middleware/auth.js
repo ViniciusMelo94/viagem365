@@ -1,23 +1,18 @@
-// Verificar a autenticidade do token informado!
-
 const { verify } = require("jsonwebtoken")
 
 async function auth(req, res, next) {
     try {
-        console.log("Entramos no Middleware")
-
-        const { authorization } = req.headers
-
-        req['payload'] = verify(authorization, process.env.SECRET_JWT)
+        const {authorization} = req.headers
+        const decoded  = verify(authorization, process.env.SECRET_JWT)
+        req.usuario_id = decoded.usuario_id
 
         next()
-
     } catch (error) {
         return res.status(401).json({
-            message: "Autenticação Falhou!",
+            message: "A autenticação falhou",
             cause: error.message
         })
     }
 }
 
-module.exports = { auth }
+module.exports = {auth}

@@ -72,7 +72,6 @@ class UsuarioController {
             res.status(201).json(usuarios)
 
         } catch (error) {
-            console.log(error.message)
             res.status(500).json({ error: 'Não possível cadastrar o usuário' })
         }
     }
