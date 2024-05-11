@@ -2,24 +2,10 @@ const Usuario = require("../models/Usuario")
 
 class UsuarioController {
 
-  async listar(req,res){
-    const usuarios = await Usuario.findAll()
-    res.json(usuarios)
-  }
-
    async cadastrar(req, res) {
         try {
-            const email = req.body.email
-            const password = req.body.password
-            const nome = req.body.nome
-            const data_nascimento = req.body.data_nascimento
-            const cep = req.body.cep
-            const sexo = req.body.sexo
-            const cpf = req.body.cpf
-            const rua = req.body.rua
-            const bairro = req.body.bairro
-            const cidade = req.body.cidade
-
+            const {email, password, nome, data_nascimento, cep, sexo, cpf, rua, bairro, cidade} = req.body
+         
             if (!nome) {
                 return res.status(400).json({ message: 'O nome é obrigatório' })
             }
@@ -57,16 +43,16 @@ class UsuarioController {
             }
 
             const usuarios = await Usuario.create({
-                email: email,
-                password: password,
-                nome: nome,
-                data_nascimento: data_nascimento,
-                cep: cep,
-                sexo: sexo,
-                cpf: cpf,
-                rua: rua,
-                bairro: bairro,
-                cidade: cidade
+                email,
+                password,
+                nome,
+                data_nascimento,
+                cep,
+                sexo,
+                cpf,
+                rua,
+                bairro,
+                cidade
             })
 
             res.status(201).json(usuarios)
