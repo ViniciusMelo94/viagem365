@@ -32,7 +32,7 @@ class DestinoController {
 
             const validarUsuario = await Usuario.findByPk(req.usuario_id)
             if (!validarUsuario) {
-                return res.status(400).json({ message: 'Usuário não existe' })
+                return res.status(404).json({ message: 'Usuário não existe' })
             }
             const ceps = req.body.cep
             const consultarCordenadas = await axios.get(`https://nominatim.openstreetmap.org/search?postalcode=${ceps}&format=json&addressdetails=1&limit=1`)
@@ -85,7 +85,44 @@ class DestinoController {
         }
     }
 
-
+    async deletar (req, res) {
+        try {
+            const { id } = req.params
+            
+            const destino = await Destino.findOne({ where: { id: id, usuario_id: req.usuario_id } })
+    
+            if (!destino) {
+                return res.status(404).json({ message: 'Destino não encontrado ou não pertence ao usuário autenticado' })
+            }
+    
+            await destino.destroy()
+    
+            res.status(200).json({ message: 'Destino excluído com sucesso' })
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Erro ao excluir o destino' })
+        }
+    }
+    
+    async alterarDestino(req, res) {
+        try {
+            const { id } = req.params
+            const { nome, cep, rua, cidade, lat, long, descricao } = req.body
+    
+            let destino = await Destino.findOne({ where: { id:id, usuario_id: req.usuario_id } })
+    
+            if (!destino) {
+                return res.status(404).json({ message: 'Destino não encontrado ou não pertence ao usuário autenticado' })
+            }
+    
+            destino = await destino.update({ nome, cep, rua, cidade, lat, long, descricao })
+    
+            res.status(200).json(destino)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ message: 'Erro ao atualizar o destino' })
+        }
+    }
 
 }
 
