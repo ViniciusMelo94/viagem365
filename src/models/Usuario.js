@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize')
 const { connection } = require('../database/connection')
 const nodemon = require('nodemon')
-const { password } = require('../config/database.config')
 
 const Usuario = connection.define('usuarios', {
     nome:{
@@ -35,5 +34,6 @@ const Usuario = connection.define('usuarios', {
         type: DataTypes.STRING,
     }
 })
+
 
 module.exports = Usuario

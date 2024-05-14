@@ -12,7 +12,7 @@ module.exports = {
                 lat: "-27.34707426142857",
                 long: "-48.551851219999996",
                 descricao: "Praia de Palmas..",
-                usuario_id:"1"
+                usuario_id:1
             },
             {
                 nome: "Praia do Sissial",
@@ -22,16 +22,27 @@ module.exports = {
                 lat: "-27.34707426142857",
                 long: "-48.551851219999996",
                 descricao: "Praia do Sissial..",
-                usuario_id:"2"
+                usuario_id:2
 
+            },
+            {
+                nome: "Praia Brava",
+                cep: "88190000",
+                rua: "Av. José Medeiros Viêira",
+                cidade: "Itajai",
+                lat: "-26.9479755",
+                long: "-48.6312984",
+                descricao: "Praia Brava Itajai",
+                usuario_id:3
             }
+
         ])
     },
 
     down: async (queryInterface, Sequelize) => {
         await Destino.destroy({
             where: {
-                nome: ["Praia de Palmas", "Praia do Sissial"]
+                nome: ["Praia de Palmas", "Praia do Sissial", "Praia Brava"]
             }
         })
     }

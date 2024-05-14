@@ -41,7 +41,7 @@
                   "example": "vinicius@gmail.com"
                 },
                 "password": {
-                  "example": "1234567"
+                  "example": "\"1234567\""
                 }
               }
             }
@@ -80,7 +80,7 @@
                   "example": "vinicius@gmail.com"
                 },
                 "password": {
-                  "example": "1234567"
+                  "example": "\"1234567\""
                 },
                 "nome": {
                   "example": "Vinicius"
@@ -89,13 +89,13 @@
                   "example": "1994-05-23"
                 },
                 "cep": {
-                  "example": "88190000"
+                  "example": "\"88190000\""
                 },
                 "sexo": {
                   "example": "Masculino"
                 },
                 "cpf": {
-                  "example": "88899988877"
+                  "example": "\"88899988877\""
                 },
                 "rua": {
                   "example": "Rua dos Laranjeiras"

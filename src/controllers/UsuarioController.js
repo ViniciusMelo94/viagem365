@@ -31,7 +31,7 @@ class UsuarioController {
             }
 
             if(!rua) {
-                return res.status(400).json({message: 'O cpf é obrigatório'})
+                return res.status(400).json({message: 'A rua é obrigatória'})
             }
 
             if(!bairro) {

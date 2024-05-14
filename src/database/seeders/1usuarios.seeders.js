@@ -4,7 +4,7 @@ const Usuario = require("../../models/Usuario");
 module.exports = {
     up: async (QueryInterface, Sequelize) => {
         await Usuario.bulkCreate([
-            {
+            {   
                 email: "vinicius@gmail.com",
                 password: "1234567",
                 nome: "Vinicius",
@@ -22,12 +22,25 @@ module.exports = {
                 nome: "João",
                 data_nascimento: "1994-11-01",
                 sexo: "masculino",
-                cpf: "88899977755",
+                cpf: "88899977744",
                 cep: "88190000",
                 rua: "Rua das Laranjeiras",
                 bairro: "Palmas",
                 cidade: "Governador Celso Ramos"
+            },
+            {
+                email: "lucas@gmail.com",
+                password: "1234567",
+                nome: "Lucas",
+                data_nascimento: "2000-04-20",
+                sexo: "masculino",
+                cpf: "88899977755",
+                cep: "88190000",
+                rua: "Rua Hipolito",
+                bairro: "Canto",
+                cidade: "Governador Celso Ramos"
             }
+
         ])
     },
 
@@ -35,7 +48,8 @@ module.exports = {
         await Usuario.destroy({
             email: [
                 "vinicius@gmail.com", 
-                "joao@gmail.com"
+                "joao@gmail.com",
+                "lucas@gmail.com"
             ] 
         })
     }
